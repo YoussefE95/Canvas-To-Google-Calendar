@@ -1,8 +1,9 @@
-const canvasAPI = require('node-canvas-api');
-const config = require('config.json');
+const config = require('./config.json');
 
 process.env.CANVAS_API_DOMAIN = config.domain;
 process.env.CANVAS_API_TOKEN = config.token;
+
+const canvasAPI = require('node-canvas-api');
 
 const getAssignments = async () => {
     try {
