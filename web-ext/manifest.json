@@ -9,7 +9,7 @@
     }
   ],
   "icons": {
-    "96": "calendar-icon-96.png"
+    "96": "icons/calendar-512.png"
   },
   "browser_action": {
     "browser_style": true,
