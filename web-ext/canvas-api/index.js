@@ -9,31 +9,47 @@ const getAssignments = async () => {
     try {
         const self = await canvasAPI.getSelf();
         const courses = await canvasAPI.getCoursesByUser(self.id);
-        const currentDate = new Date();
-    
-        courses.forEach(async (course) => {
-            if(!course.access_restricted_by_date) {
-                const courseAssignments = await canvasAPI.getAssignments(course.id);
-    
-                courseAssignments.forEach((assignment) => {
-                    if(assignment.due_at) {
-                        const dueDate = new Date(assignment.due_at);
-    
-                        if(currentDate < dueDate) {
-                            const assignmentInfo = {
-                                "name": assignment.name,
-                                "class": course.course_code,
-                                "due": dueDate,
-                            };
-                            console.log(assignmentInfo);
-                        }
-                    }
-                });
+  
+        const sectionedAssignments = courses.filter(course => {
+            if(course.access_restricted_by_date) {
+                return false;
+            } else {
+                return true;
             }
+        }).map(async course => {
+            const courseAssignments = await canvasAPI.getAssignments(course.id);
+            const currentDate = new Date();
+        
+            return courseAssignments.filter(assignment => {
+                if (assignment.due_at) {
+                    if (currentDate < new Date(assignment.due_at)) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else {
+                    return false;
+                }
+            }).map(assignment => {
+                return {
+                    "name": assignment.name,
+                    "class": course.course_code,
+                    "due": new Date(assignment.due_at),
+                };
+            });
         });
-    } catch(err) {
-        console.log(err);
+
+        const allAssignments = await Promise.all(sectionedAssignments)
+            .then(assignment => {
+                return assignment;
+            })
+
+        return allAssignments.flat();
+    } catch(error) {
+        return { message: 'Assignment retrieval failed', error }
     }
 };
 
-getAssignments();
+module.exports = {
+    getAssignments
+}
