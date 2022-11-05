@@ -8,13 +8,15 @@
       "js": ["/content_script.js"]
     }
   ],
+  "background": {
+    "scripts": ["background.js"]
+  },
   "icons": {
-    "96": "icons/calendar-512.png"
+    "96": "../icons/calendar-512.png"
   },
   "browser_action": {
     "browser_style": true,
-    "default_title": "Canvas_to_Google_Calendar",
-    "default_popup": "/popup.html"
+    "default_title": "Canvas_to_Google_Calendar"
   },
-  "permissions": ["storage"]
+  "permissions": ["storage", "*://calstatela.instructure.com/api/v1/*"]
 }
