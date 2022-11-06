@@ -3,7 +3,7 @@
 ### Summary
 During this implementation phase, we decided to change our final goal. Initially, we wanted to write an extension that can retrieve all Canvas assignments due and then take those data points and convert them into  Google Calendar tasks. As a team we noticed there is value in being able to see what is due on canvas at a click of a button, this saves the user the time of navigating over to Canvas. We believe our extension can provide value to students by being able to quickly make sure that you haven't missed something important. Therefore we have decided that for our final goal we want to be able to retrieve all assignments, tests, and quizzes coming up and list them for the user in a pop-up window. We also want to make the list interactive, with features such as writing a quick note next to an assignment, removing an item from the list, adding an item to the list and implementing animations for all these actions.
 
-### What was built?
+### Progress
 During this phase, we focused on the retrieval of assignments from the Canvas API and our extension pop-up implementation. A big milestone for us was to successfully retrieve all upcoming assignments and list them in a pop-up for the user. The way our extension currently works is when our icon is clicked on a pop-up window appears with two text boxes and a button. The first text box is asking what school the student goes to and the second text box is asking for an authorization token. After both text boxes are filled the user can click on the submit button which fetches all assignments due and lists them for the user in the pop-up window.
 
 ### Challanges
