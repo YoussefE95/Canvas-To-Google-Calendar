@@ -1,20 +1,17 @@
 {
-  "name": "Canvas_to_Google_Calendar",
-  "version": "1.0.0",
-  "manifest_version": 2,
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["/content_script.js"]
-    }
-  ],
-  "icons": {
-    "96": "icons/calendar-512.png"
-  },
-  "browser_action": {
-    "browser_style": true,
-    "default_title": "Canvas_to_Google_Calendar",
-    "default_popup": "/popup.html"
-  },
-  "permissions": ["storage"]
+    "name": "Canvas_to_Google_Calendar",
+    "version": "1.0.0",
+    "manifest_version": 2,
+
+    "icons": {
+        "96": "icons/calendar-512.png"
+    },
+
+    "browser_action": {
+        "browser_style": true,
+        "default_title": "Canvas_to_Google_Calendar",
+        "default_popup": "popup/canvas-assignments.html"
+    },
+
+    "permissions": ["storage", "*://*.instructure.com/api/v1/*"]
 }
