@@ -1,6 +1,7 @@
 const domainInput = document.querySelector("#domain-input");
 const tokenInput = document.querySelector("#token-input");
 const assignmentsList = document.getElementById("assignments-list");
+const fetchAssignments = document.getElementById("fetch-assignments");
 
 domainInput.addEventListener("change", async (e) => {
     const domain = e.target.value;
@@ -16,7 +17,8 @@ const getSelf = async () => {
     try {
         const { domain } = await browser.storage.local.get("domain");
         const { token } = await browser.storage.local.get("token");
-        const response = await fetch(`${ domain }/users/self`, {
+        const url = `https://${ domain }.instructure.com/api/v1/users/self`
+        const response = await fetch(url, {
             method: "GET",
             mode: "cors",
             headers: {
@@ -34,7 +36,8 @@ const getCourses = async () => {
     try {
         const { domain } = await browser.storage.local.get("domain");
         const { token } = await browser.storage.local.get("token");
-        const response = await fetch(`${ domain }/courses?enrollment_state=active`, {
+        const url = `https://${ domain }.instructure.com/api/v1/courses?enrollment_state=active`
+        const response = await fetch(url, {
             method: "GET",
             mode: "cors",
             headers: {
@@ -74,9 +77,8 @@ const filterAssignments = async (assignments) => {
 const getAssignmentsByCourse = async (selfId, courseId) => {
     const { domain } = await browser.storage.local.get("domain");
     const { token } = await browser.storage.local.get("token");
-    const response = await fetch(
-        `${ domain }/users/${ selfId }/courses/${ courseId }/assignments`,
-        {
+    const url = `https://${ domain }.instructure.com/api/v1/users/${ selfId }/courses/${ courseId }/assignments`
+    const response = await fetch(url, {
             method: "GET",
             mode: "cors",
             headers: {
@@ -87,7 +89,7 @@ const getAssignmentsByCourse = async (selfId, courseId) => {
     return await response.json();
 };
 
-document.addEventListener("click", async () => {
+fetchAssignments.addEventListener("click", async () => {
     try {
         const self = await getSelf();
         const courses = await getCourses();
