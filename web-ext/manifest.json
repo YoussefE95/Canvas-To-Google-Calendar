@@ -1,5 +1,5 @@
 {
-    "name": "Canvas_to_Google_Calendar",
+    "name": "What's Due Canvas?",
     "version": "1.0.0",
     "manifest_version": 2,
 
@@ -9,7 +9,7 @@
 
     "browser_action": {
         "browser_style": true,
-        "default_title": "Canvas_to_Google_Calendar",
+        "default_title": "What's Due Canvas?",
         "default_popup": "popup/canvas-assignments.html"
     },
 
