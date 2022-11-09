@@ -1,4 +1,4 @@
-# What's Up Canvas?
+# What's Due Canvas?
 ### This FireFox extension allows you to check upcoming assignments on Canvas without having to log in! You can also attach personal notes to each assignments to help track progress
 
 ## How to Test?
