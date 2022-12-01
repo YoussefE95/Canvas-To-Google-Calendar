@@ -4,26 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style>
-      body {
-        padding: 1em;
-      }
-      input {
-        margin-left: 1em;
-      }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="canvas-assignments.css">
   </head>
   <body>
-    <label>
-      School
-      <input id="domain-input" type="text" placeholder="Domain" />
-    </label>
-    <label>
-      Token
-      <input id="token-input" type="text" placeholder="Token" />
-    </label>
+    <div class="flex-col">
+    <div class="auth-container">
+      <div>
+        <label class="input-label">
+          School
+        </label>
+        <input class="text-input" id="domain-input" type="text" placeholder="Domain" />
+      </div>
+      <div>
+        <label class="input-label">
+          Token
+        </label>
+        <input class="text-input" id="token-input" type="text" placeholder="Token" />
+      </div>
+    </div>
     <input id="fetch-assignments" type="button" value="Get Assignments" />
     <ul id="assignments-list"></ul>
     <script src="canvas-assignments.js"></script>
+  </div>
   </body>
 </html>

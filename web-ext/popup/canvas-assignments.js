@@ -107,9 +107,9 @@ fetchAssignments.addEventListener("click", async () => {
 
     assignmentObjs.forEach((assignment) => {
       const listItem = document.createElement("li");
-      listItem.innerText = `  Course: ${assignment.course}\n
-                                  Assignment Name: ${assignment.assignment}\n
-                                  Due Date: ${assignment.due_at}\n`;
+      listItem.innerText = `  Course: ${assignment.course}
+                                  Assignment Name: ${assignment.assignment}
+                                  Due Date: ${assignment.due_at}`;
       assignmentsList.append(listItem);
     });
   } catch (error) {
