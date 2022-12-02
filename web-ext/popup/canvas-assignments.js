@@ -78,7 +78,8 @@ const getAssignmentsByCourse = async (selfId, courseId) => {
   const { domain } = await browser.storage.local.get("domain");
   const { token } = await browser.storage.local.get("token");
   const url = `https://${domain}.instructure.com/api/v1/users/${selfId}/courses/${courseId}/assignments`;
-  const response = await fetch(url, {
+  console.log("url = " + url);
+    const response = await fetch(url, {
     method: "GET",
     mode: "cors",
     headers: {
