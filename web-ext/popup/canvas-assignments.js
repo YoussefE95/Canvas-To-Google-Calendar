@@ -2,6 +2,7 @@ const domainInput = document.querySelector("#domain-input");
 const tokenInput = document.querySelector("#token-input");
 const assignmentsList = document.getElementById("assignments-list");
 const fetchAssignments = document.getElementById("fetch-assignments");
+const loader = document.getElementById("loader");
 
 browser.storage.local.get(['assignments'], function(result) {
   if(!(result.assignments == undefined) || !(result.assignments == "undefined") ) {
@@ -24,6 +25,14 @@ tokenInput.addEventListener("change", async (e) => {
   const token = e.target.value;
   await browser.storage.local.set({ token });
 });
+
+const addLoader = () => {
+  loader.classList.add("loader");
+}
+
+const removeLoader = () => {
+  loader.classList.remove("loader");
+}
 
 const getSelf = async () => {
   try {
@@ -100,8 +109,9 @@ const getAssignmentsByCourse = async (selfId, courseId) => {
 };
 
 fetchAssignments.addEventListener("click", async () => {
+  addLoader();
   assignmentsList.innerHTML = '';
-  try {
+  try {  
     const self = await getSelf();
     const courses = await getCourses();
     const coursesMap = getCoursesMap(courses);
@@ -131,6 +141,7 @@ fetchAssignments.addEventListener("click", async () => {
       Due Date: ${assignment.due_at}`;
       assignmentsList.append(listItem);
     });
+    removeLoader();
   } catch (error) {
     console.log(error);
   }

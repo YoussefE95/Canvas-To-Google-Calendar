@@ -54,3 +54,25 @@ body {
 #assignments-list li{
     margin-bottom: 50px;
 }
+
+.loader{
+    margin: 10px;
+    width: 500px;
+    height: 300px;
+    background: linear-gradient(
+        90deg,
+        rgba(255,255,255, 0),
+        rgba(255,255,255,0.25) 50%,
+        rgba(255,255,255, 0) 80%
+    ), rgb(50,50,50);
+    background-position: -200px;
+    background-size: 200px 100%;
+    background-repeat: repeat-y;
+    animation: loading 1s infinite;
+}
+
+@keyframes loading {
+    to{
+        background-position: calc(100% + 200px) 0;
+    }
+}
